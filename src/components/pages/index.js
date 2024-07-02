@@ -1,0 +1,6 @@
+export * from "./Home"
+export * from "./Paciente"
+export * from "./Enfermedad"
+export * from "./ExamenFisico"
+export * from "./Diagnostico"
+export * from "./Tratamiento"
