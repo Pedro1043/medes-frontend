@@ -11,7 +11,9 @@
     "start": "serve dist -s -n -L -p $PORT"
   },
   "dependencies": {
+    "bootstrap": "^5.3.3",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.10.4",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.24.0",
     "serve": "^14.2.3"

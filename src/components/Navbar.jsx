@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 
-import { Link, NavLink } from 'react-router-dom';
+import { Link, Outlet, NavLink, useLocation } from 'react-router-dom';
 
 import "./Navbar.css"
 
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const {state} = useLocation()
+
+  console.log(state);
 
   return (
     <nav>
@@ -34,6 +38,20 @@ export const Navbar = () => {
             </li>
             <li>
                 <NavLink to="/tratamiento">Tratamiento</NavLink>
+            </li>
+            <li>
+                <NavLink to="/login">Iniciar sesión</NavLink>
+            </li>
+            <li>
+                <NavLink to="/register">Registrarse</NavLink>
+            </li>
+            <li>
+                <div className='user'>
+                    <span className='username'>Pedro</span>
+                </div>
+            </li>
+            <li>
+                <button>Cerrar sesión</button>
             </li>
         </ul>
     </nav>
