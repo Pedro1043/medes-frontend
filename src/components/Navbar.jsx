@@ -37,9 +37,6 @@ export const Navbar = () => {
                 <NavLink to="/diagnostico">Diagnostico</NavLink>
             </li>
             <li>
-                <NavLink to="/tratamiento">Tratamiento</NavLink>
-            </li>
-            <li>
                 <NavLink to="/login">Iniciar sesión</NavLink>
             </li>
             <li>

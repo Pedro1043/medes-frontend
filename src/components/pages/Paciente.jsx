@@ -4,8 +4,18 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Table from 'react-bootstrap/Table';
+import { useState, useEffect } from 'react';
 
 export const Paciente = () => {
+  const [Paciente, setPaciente] = useState(null);
+
+  useEffect(() => {
+    fetch("https://microservicio-paciente-production.up.railway.app/api/v1/patient/getAll")
+      .then((response) => response.json())
+      .then((Paciente) => setPaciente(Paciente))
+  }, []);
+  console.log(Paciente);
   return (
     <>
     <h2>Registrar Paciente</h2>
@@ -43,11 +53,48 @@ export const Paciente = () => {
           <Form.Control placeholder='07/12/2000'/>
         </Form.Group>
       </Row>
+    </Form>   
 
+      <h2>Antecedentes</h2>
+        <Form>
+         <Form.Group className='mb-3' controlId='formGridAntFamiliares'>
+          <Form.Label>Antecedentes Familiares</Form.Label>
+          <Form.Control/>
+         </Form.Group>
+         <Form.Group className='mb-3' controlId='formGridAntPersonales'>
+          <Form.Label>Antecedentes Personales</Form.Label>
+          <Form.Control/>
+         </Form.Group>              
+        </Form>
       <Button variant="primary" type="submit">
         Registrar
       </Button>
-    </Form>      
+
+      <Table striped="columns">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Dirección</th>
+            <th>Celular</th>
+            <th>Dni</th>
+            <th>Fecha de nacimiento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {Paciente?.map((paciente) => (
+              <td key={paciente.idPaciente}>{paciente.idPaciente}</td>
+            ))}
+          </tr>
+          <tr>
+            {Paciente?.map((paciente) => (
+              <td>{paciente.nombresPaciente}</td>
+            ))}
+          </tr>          
+        </tbody>
+      </Table>
     </>
   )
 }
